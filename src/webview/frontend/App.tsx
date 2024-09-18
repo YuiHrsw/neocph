@@ -380,45 +380,45 @@ function Judge(props: {
         }
     };
 
-    const renderDonateButton = () => {
-        const diff = new Date().getTime() - webviewState.dialogCloseDate;
-        const diffInDays = diff / (1000 * 60 * 60 * 24);
-        console.log('Diff in days:', diffInDays);
-        if (diffInDays < 14) {
-            return null;
-        }
+    // const renderDonateButton = () => {
+    //     const diff = new Date().getTime() - webviewState.dialogCloseDate;
+    //     const diffInDays = diff / (1000 * 60 * 60 * 24);
+    //     console.log('Diff in days:', diffInDays);
+    //     if (diffInDays < 14) {
+    //         return null;
+    //     }
 
-        return (
-            <div className="donate-box">
-                <a
-                    href="javascript:void(0)"
-                    className="right"
-                    title="Close dialog"
-                    onClick={() => closeDonateBox()}
-                >
-                    <i className="codicon codicon-close"></i>
-                </a>
-                <h1>🌸</h1>
-                <h3>If you find CPH useful, please consider supporting.</h3>
-                <p>
-                    Your contribution helps support continued development of
-                    CPH. CPH is free and open source, thanks to your support.
-                </p>
-                <a
-                    href={payPalUrl}
-                    className="btn btn-pink"
-                    title="Open donation page"
-                >
-                    <i className="codicon codicon-heart-filled"></i> Donate
-                </a>
-            </div>
-        );
-    };
+    //     return (
+    //         <div className="donate-box">
+    //             <a
+    //                 href="javascript:void(0)"
+    //                 className="right"
+    //                 title="Close dialog"
+    //                 onClick={() => closeDonateBox()}
+    //             >
+    //                 <i className="codicon codicon-close"></i>
+    //             </a>
+    //             <h1>🌸</h1>
+    //             <h3>If you find CPH useful, please consider supporting.</h3>
+    //             <p>
+    //                 Your contribution helps support continued development of
+    //                 CPH. CPH is free and open source, thanks to your support.
+    //             </p>
+    //             <a
+    //                 href={payPalUrl}
+    //                 className="btn btn-pink"
+    //                 title="Open donation page"
+    //             >
+    //                 <i className="codicon codicon-heart-filled"></i> Donate
+    //             </a>
+    //         </div>
+    //     );
+    // };
 
     return (
         <div className="ui">
             {notification && <div className="notification">{notification}</div>}
-            {renderDonateButton()}
+            {/* {renderDonateButton()} */}
             <div className="meta">
                 <h1 className="problem-name">
                     <a href={getHref()}>{problem.name}</a>{' '}
@@ -458,7 +458,7 @@ function Judge(props: {
                 </span>
                 <br />
                 <br />
-                <div>
+                {/* <div>
                     <small>
                         <a
                             href={payPalUrl}
@@ -475,7 +475,7 @@ function Judge(props: {
                             Feedback
                         </a>
                     </small>
-                </div>
+                </div> */}
                 <div className="remote-message">
                     <p
                         dangerouslySetInnerHTML={{

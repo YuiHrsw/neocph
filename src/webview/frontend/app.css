@@ -44,7 +44,7 @@ body {
 }
 
 * {
-    border-radius: 2px;
+    border-radius: 12px;
 }
 
 #app {
@@ -61,23 +61,16 @@ body {
     left: 0px;
     width: 100%;
     padding: 15px;
-    background: var(--vscode-menu-background);
-    box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-}
-
-.donate-box {
-    margin: 10px;
-    border-radius: 4px;
-    padding: 10px;
-    border: 1px solid rgba(70, 70, 70, 0.11);
-    /*gradient from light pink ( transparentish ) to full transparent */
-    background: linear-gradient(0deg, #f382e067, transparent);
+    /* background: var(--vscode-menu-background); */
+    /* box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3); */
 }
 
 .case {
     background: rgba(0, 0, 0, 0.1);
     padding: 8px;
     margin-bottom: 2px;
+    margin-left: 10px;
+    margin-right: 14px;
 }
 
 .exec-time {
@@ -132,7 +125,7 @@ textarea {
     max-height: 250px !important;
     overflow-y: auto;
     resize: none;
-    border: 1px solid var(--input-background);
+    /* border: 1px solid var(--input-background); */
     margin-bottom: 4px;
 }
 
@@ -156,7 +149,7 @@ textarea:focus,
 textarea:active {
     background: black;
     outline: none !important;
-    border: 1px solid #3393cc;
+    /* border: 1px solid #3393cc; */
 }
 
 .case-metadata {
@@ -243,7 +236,7 @@ textarea:active {
 
 .btn-pink {
     background: #ffaefbe3;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); */
 }
 
 body.vscode-light .btn-pink {
@@ -295,20 +288,22 @@ body.vscode-light textarea,
 pre {
     background: rgba(255, 255, 255, 0.5);
     outline: none !important;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
 }
 
 body.vscode-light .case {
-    background: var(--vscode-list-dropBackground);
-    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    border-left: 5px solid rgba(0, 0, 0, 0.3);
+    /* background: var(--vscode-list-dropBackground); */
+    /* box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2); */
+    border-left: 5px solid rgba(0, 0, 0, 0.2);
     margin-bottom: 4px;
+    margin-left: 10px;
+    margin-right: 14px;
 }
 
 body.vscode-light textarea:focus {
     background: white;
     outline: none !important;
-    border: 1px solid rgb(28, 145, 184);
+    /* border: 1px solid rgb(28, 145, 184); */
 }
 
 button:disabled {
@@ -423,7 +418,7 @@ body.vscode-light .notification {
     right: 5px;
     background: rgb(58, 57, 57);
     color: white !important;
-    border: 1px solid rgb(92, 95, 97);
+    /* border: 1px solid rgb(92, 95, 97); */
 }
 
 /* @keyframes runs {
@@ -455,9 +450,9 @@ body.vscode-light .case-number {
 }
 
 @media only screen and (max-width: 400px) {
-    .actions {
+    /* .actions {
         border-top: 1px solid rgba(0, 0, 0, 0.5);
-    }
+    } */
 
     .row {
         display: grid;
