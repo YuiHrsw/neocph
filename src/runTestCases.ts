@@ -47,7 +47,7 @@ export default async () => {
         command: 'new-problem',
         problem: problem,
     });
-    runAllAndSave(problem);
+    runAllAndSave(problem, true);
     vscode.window.showTextDocument(editor.document, vscode.ViewColumn.One);
 };
 

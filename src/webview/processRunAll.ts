@@ -9,12 +9,16 @@ import { getJudgeViewProvider } from '../extension';
  * Run every testcase in a problem one by one. Waits for the first to complete
  * before running next. `runSingleAndSave` takes care of saving.
  **/
-export default async (problem: Problem) => {
+export default async (problem: Problem, skipCompile = false) => {
     console.log('Run all started', problem);
-    const didCompile = await compileFile(problem.srcPath);
-    if (!didCompile) {
-        return;
+
+    if (!skipCompile) {
+        const didCompile = await compileFile(problem.srcPath);
+        if (!didCompile) {
+            return;
+        }
     }
+
     for (const testCase of problem.tests) {
         getJudgeViewProvider().extensionToJudgeViewMessage({
             command: 'running',
