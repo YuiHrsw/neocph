@@ -61,7 +61,8 @@ body {
     left: 0px;
     width: 100%;
     padding: 15px;
-    /* background: var(--vscode-menu-background); */
+    background: var(--vscode-panel-background);
+    border-radius: 0px;
     /* box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3); */
 }
 
@@ -292,8 +293,6 @@ body.vscode-light .case {
     /* box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2); */
     border-left: 5px solid rgba(0, 0, 0, 0.2);
     margin-bottom: 4px;
-    margin-left: 10px;
-    margin-right: 14px;
 }
 
 body.vscode-light textarea:focus {
@@ -340,8 +339,11 @@ button:disabled {
 }
 
 .case {
-    background: var(--vscode-toolbar-activeBackground);
+    /* background: var(--vscode-toolbar-activeBackground); */
     border-left: 5px solid var(--vscode-input-background);
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .case.running {
