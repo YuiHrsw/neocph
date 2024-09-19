@@ -17,9 +17,6 @@ declare const vscodeApi: {
     setState: (state: WebViewpersistenceState) => void;
 };
 
-// Original: www.paypal.com/ncp/payment/CMLKCFEJEMX5L
-const payPalUrl = 'https://rb.gy/5iiorz';
-
 function Judge(props: {
     problem: Problem;
     updateProblem: (problem: Problem) => void;
@@ -35,7 +32,6 @@ function Judge(props: {
     const [forceRunning, setForceRunning] = useState<number | false>(false);
     const [compiling, setCompiling] = useState<boolean>(false);
     const [notification, setNotification] = useState<string | null>(null);
-    const [waitingForSubmit, setWaitingForSubmit] = useState<boolean>(false);
     const [onlineJudgeEnv, setOnlineJudgeEnv] = useState<boolean>(false);
     const [webviewState, setWebviewState] = useState<WebViewpersistenceState>(
         () => {
@@ -102,14 +98,6 @@ function Judge(props: {
                 }
                 case 'compiling-stop': {
                     setCompiling(false);
-                    break;
-                }
-                case 'submit-finished': {
-                    setWaitingForSubmit(false);
-                    break;
-                }
-                case 'waiting-for-submit': {
-                    setWaitingForSubmit(true);
                     break;
                 }
                 default: {
@@ -202,24 +190,6 @@ function Judge(props: {
         });
     };
 
-    const submitKattis = () => {
-        sendMessageToVSCode({
-            command: 'submitKattis',
-            problem,
-        });
-
-        setWaitingForSubmit(true);
-    };
-
-    const submitCf = () => {
-        sendMessageToVSCode({
-            command: 'submitCf',
-            problem,
-        });
-
-        setWaitingForSubmit(true);
-    };
-
     const debounceFocusLast = () => {
         setTimeout(() => {
             setFocusLast(false);
@@ -308,70 +278,6 @@ function Judge(props: {
         }
     });
 
-    const renderSubmitButton = () => {
-        if (!problem.url.startsWith('http')) {
-            return null;
-        }
-
-        let url: URL;
-        try {
-            url = new URL(problem.url);
-        } catch (err) {
-            console.error(err, problem);
-            return null;
-        }
-        if (
-            url.hostname !== 'codeforces.com' &&
-            url.hostname !== 'open.kattis.com'
-        ) {
-            return null;
-        }
-
-        if (url.hostname == 'codeforces.com') {
-            return (
-                <button className="btn" onClick={submitCf}>
-                    <span className="icon">
-                        <i className="codicon codicon-cloud-upload"></i>
-                    </span>{' '}
-                    Submit
-                </button>
-            );
-        } else if (url.hostname == 'open.kattis.com') {
-            return (
-                <div className="pad-10 submit-area">
-                    <button className="btn" onClick={submitKattis}>
-                        <span className="icon">
-                            <i className="codicon codicon-cloud-upload"></i>
-                        </span>{' '}
-                        Submit on Kattis
-                    </button>
-                    {waitingForSubmit && (
-                        <>
-                            <span className="loader"></span> Submitting...
-                            <br />
-                            <small>
-                                To submit to Kattis, you need to have the{' '}
-                                <a href="https://github.com/Kattis/kattis-cli/blob/main/submit.py">
-                                    submission client{' '}
-                                </a>
-                                and the{' '}
-                                <a href="https://open.kattis.com/download/kattisrc">
-                                    configuration file{' '}
-                                </a>
-                                downloaded in a folder called .kattis in your
-                                home directory.
-                                <br />
-                                Submission result will open in your browser.
-                                <br />
-                                <br />
-                            </small>
-                        </>
-                    )}
-                </div>
-            );
-        }
-    };
-
     const getHref = () => {
         if (problem.local === undefined || problem.local === false) {
             return problem.url;
@@ -380,45 +286,9 @@ function Judge(props: {
         }
     };
 
-    // const renderDonateButton = () => {
-    //     const diff = new Date().getTime() - webviewState.dialogCloseDate;
-    //     const diffInDays = diff / (1000 * 60 * 60 * 24);
-    //     console.log('Diff in days:', diffInDays);
-    //     if (diffInDays < 14) {
-    //         return null;
-    //     }
-
-    //     return (
-    //         <div className="donate-box">
-    //             <a
-    //                 href="javascript:void(0)"
-    //                 className="right"
-    //                 title="Close dialog"
-    //                 onClick={() => closeDonateBox()}
-    //             >
-    //                 <i className="codicon codicon-close"></i>
-    //             </a>
-    //             <h1>🌸</h1>
-    //             <h3>If you find CPH useful, please consider supporting.</h3>
-    //             <p>
-    //                 Your contribution helps support continued development of
-    //                 CPH. CPH is free and open source, thanks to your support.
-    //             </p>
-    //             <a
-    //                 href={payPalUrl}
-    //                 className="btn btn-pink"
-    //                 title="Open donation page"
-    //             >
-    //                 <i className="codicon codicon-heart-filled"></i> Donate
-    //             </a>
-    //         </div>
-    //     );
-    // };
-
     return (
         <div className="ui">
             {notification && <div className="notification">{notification}</div>}
-            {/* {renderDonateButton()} */}
             <div className="meta">
                 <h1 className="problem-name">
                     <a href={getHref()}>{problem.name}</a>{' '}
@@ -442,7 +312,6 @@ function Judge(props: {
                         </span>{' '}
                         New Testcase
                     </button>
-                    {renderSubmitButton()}
                 </div>
 
                 <br />
@@ -458,24 +327,6 @@ function Judge(props: {
                 </span>
                 <br />
                 <br />
-                {/* <div>
-                    <small>
-                        <a
-                            href={payPalUrl}
-                            className="btn btn-pink"
-                            title="Donate"
-                        >
-                            <i className="codicon codicon-heart-filled"></i>{' '}
-                            Support
-                        </a>
-                    </small>
-                    <small>
-                        <a href="https://rb.gy/vw82u5" className="btn">
-                            <i className="codicon codicon-feedback"></i>{' '}
-                            Feedback
-                        </a>
-                    </small>
-                </div> */}
                 <div className="remote-message">
                     <p
                         dangerouslySetInnerHTML={{
@@ -492,9 +343,9 @@ function Judge(props: {
                         title="Run all testcases again"
                     >
                         <span className="icon">
-                            <i className="codicon codicon-run-above"></i>
+                            <i className="codicon codicon-run"></i>
                         </span>{' '}
-                        <span className="action-text">Run All</span>
+                        <span className="action-text">Run</span>
                     </button>
                     <button
                         className="btn btn-green"
@@ -519,21 +370,6 @@ function Judge(props: {
                         <span className="action-text">Stop</span>
                     </button>
                     <button
-                        className="btn"
-                        title="Help"
-                        onClick={() =>
-                            sendMessageToVSCode({
-                                command: 'url',
-                                url: 'https://github.com/agrawal-d/cph/blob/main/docs/user-guide.md',
-                            })
-                        }
-                    >
-                        <span className="icon">
-                            <i className="codicon codicon-question"></i>
-                        </span>{' '}
-                        <span className="action-text">Help</span>
-                    </button>
-                    <button
                         className="btn btn-red right"
                         onClick={deleteTcs}
                         title="Delete all testcases and close results window"
@@ -545,25 +381,6 @@ function Judge(props: {
                     </button>
                 </div>
             </div>
-
-            {waitingForSubmit && (
-                <div className="margin-10">
-                    <span className="loader"></span> Waiting for extension ...
-                    <br />
-                    <small>
-                        To submit to codeforces, you need to have the{' '}
-                        <a href="https://github.com/agrawal-d/cph-submit">
-                            cph-submit browser extension{' '}
-                        </a>
-                        installed, and a browser window open. You can change
-                        language ID from VS Code settings.
-                        <br />
-                        <br />
-                        Hint: You can also press <kbd>Ctrl+Alt+S</kbd> to
-                        submit.
-                    </small>
-                </div>
-            )}
         </div>
     );
 }
@@ -678,15 +495,6 @@ function App() {
                             </span>{' '}
                             Create Problem
                         </div>
-                        <a
-                            className="btn btn-block btn-green"
-                            href="https://github.com/agrawal-d/cph/blob/main/docs/user-guide.md"
-                        >
-                            <span className="icon">
-                                <i className="codicon codicon-question"></i>
-                            </span>{' '}
-                            How to use this extension
-                        </a>
                     </div>
                 </div>
             </>

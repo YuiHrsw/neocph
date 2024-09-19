@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import { storeSubmitProblem, submitKattisProblem } from '../companion';
 import { killRunning } from '../executions';
 import { saveProblem } from '../parser';
 import { VSToWebViewMessage, WebviewToVSEvent } from '../types';
@@ -24,7 +23,7 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
         return this._view === undefined;
     }
 
-    constructor(private readonly _extensionUri: vscode.Uri) {}
+    constructor(private readonly _extensionUri: vscode.Uri) { }
 
     public resolveWebviewView(webviewView: vscode.WebviewView) {
         this._view = webviewView;
@@ -70,15 +69,6 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
                             problem: undefined,
                         });
                         deleteProblemFile(message.problem.srcPath);
-                        break;
-                    }
-
-                    case 'submitCf': {
-                        storeSubmitProblem(message.problem);
-                        break;
-                    }
-                    case 'submitKattis': {
-                        submitKattisProblem(message.problem);
                         break;
                     }
 
@@ -143,7 +133,6 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
         console.log(message.command);
 
         switch (message.command) {
-            case 'waiting-for-submit':
             case 'compiling-start':
             case 'run-all': {
                 this.focus();
@@ -171,9 +160,6 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
             // Always focus on the view whenever a command is posted. Meh.
             // this._view.show?.(true); // `show` is not implemented in 1.49 but is for 1.50 insiders
             this._view.webview.postMessage(message);
-            if (message.command !== 'submit-finished') {
-                console.log('View got message', message);
-            }
             if (message.command === 'new-problem') {
                 if (message.problem === undefined) {
                     this.problemPath = undefined;

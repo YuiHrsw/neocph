@@ -8,89 +8,18 @@ import { writeFileSync, readFileSync, existsSync } from 'fs';
 import { isCodeforcesUrl, randomId } from './utils';
 import {
     getDefaultLangPref,
-    getLanguageId,
     useShortCodeForcesName,
     getMenuChoices,
     getDefaultLanguageTemplateFileLocation,
 } from './preferences';
 import { getProblemName } from './submit';
-import { spawn } from 'child_process';
 import { getJudgeViewProvider } from './extension';
 import { words_in_text } from './utilsPure';
 import telmetry from './telmetry';
-import os from 'os';
 
 const emptyResponse: CphEmptyResponse = { empty: true };
 let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
 const COMPANION_LOGGING = false;
-
-export const submitKattisProblem = (problem: Problem) => {
-    globalThis.reporter.sendTelemetryEvent(telmetry.SUBMIT_TO_KATTIS);
-    const srcPath = problem.srcPath;
-    const homedir = os.homedir();
-    let submitPath = `${homedir}/.kattis/submit.py`;
-    if (process.platform == 'win32') {
-        if (
-            !existsSync(`${homedir}\\.kattis\\.kattisrc`) ||
-            !existsSync(`${homedir}\\.kattis\\submit.py`)
-        ) {
-            vscode.window.showErrorMessage(
-                `Please ensure .kattisrc and submit.py are present in ${homedir}\\.kattis\\submit.py`,
-            );
-            return;
-        } else {
-            submitPath = `${homedir}\\.kattis\\submit.py`;
-        }
-    } else {
-        if (
-            !existsSync(`${homedir}/.kattis/.kattisrc`) ||
-            !existsSync(`${homedir}/.kattis/submit.py`)
-        ) {
-            vscode.window.showErrorMessage(
-                `Please ensure .kattisrc and submit.py are present in ${homedir}/.kattis/submit.py`,
-            );
-            return;
-        } else {
-            submitPath = `${homedir}/.kattis/submit.py`;
-        }
-    }
-    const pyshell = spawn('python', [submitPath, '-f', srcPath]);
-
-    //tells the python script to open submission window in new tab
-    pyshell.stdin.setDefaultEncoding('utf-8');
-    pyshell.stdin.write('Y\n');
-    pyshell.stdin.end();
-
-    pyshell.stdout.on('data', function (data) {
-        console.log(data.toString());
-        getJudgeViewProvider().extensionToJudgeViewMessage({
-            command: 'new-problem',
-            problem,
-        });
-        ({ command: 'submit-finished' });
-    });
-    pyshell.stderr.on('data', function (data) {
-        console.log(data.tostring());
-        vscode.window.showErrorMessage(data);
-    });
-};
-
-/** Stores a response to be submitted to CF page soon. */
-export const storeSubmitProblem = (problem: Problem) => {
-    const srcPath = problem.srcPath;
-    const problemName = getProblemName(problem.url);
-    const sourceCode = readFileSync(srcPath).toString();
-    const languageId = getLanguageId(problem.srcPath);
-    savedResponse = {
-        empty: false,
-        url: problem.url,
-        problemName,
-        sourceCode,
-        languageId,
-    };
-    globalThis.reporter.sendTelemetryEvent(telmetry.SUBMIT_TO_CODEFORCES);
-    console.log('Stored savedResponse', savedResponse);
-};
 
 export const setupCompanionServer = () => {
     try {
@@ -118,26 +47,12 @@ export const setupCompanionServer = () => {
                 }
             });
             res.write(JSON.stringify(savedResponse));
-            if (headers['cph-submit'] == 'true') {
-                COMPANION_LOGGING &&
-                    console.log(
-                        'Request was from the cph-submit extension; sending savedResponse and clearing it',
-                        savedResponse,
-                    );
-
-                if (savedResponse.empty != true) {
-                    getJudgeViewProvider().extensionToJudgeViewMessage({
-                        command: 'submit-finished',
-                    });
-                }
-                savedResponse = emptyResponse;
-            }
             res.end();
         });
         server.listen(config.port);
         server.on('error', (err) => {
             vscode.window.showErrorMessage(
-                `Are multiple VSCode windows open? CPH will work on the first opened window. CPH server encountered an error: "${err.message}" , companion may not work.`,
+                err.message,
             );
         });
         console.log('Companion server listening on port', config.port);

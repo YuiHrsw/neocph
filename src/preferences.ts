@@ -1,7 +1,5 @@
 import { workspace } from 'vscode';
 import type { prefSection } from './types';
-import config from './config';
-import path from 'path';
 import fs from 'fs';
 import * as vscode from 'vscode';
 
@@ -115,62 +113,3 @@ export const getHaskellCommand = (): string =>
 export const getMenuChoices = (): string[] =>
     getPreference('general.menuChoices').split(' ');
 
-/** The language ID preference for a particular extension. */
-export const getLanguageId = (srcPath: string): number => {
-    const extension = path.extname(srcPath);
-    let compiler = null;
-    switch (extension) {
-        case '.cpp': {
-            compiler = getPreference('language.cpp.SubmissionCompiler');
-            break;
-        }
-
-        case '.java': {
-            compiler = getPreference('language.java.SubmissionCompiler');
-            break;
-        }
-
-        case '.js': {
-            compiler = getPreference('language.js.SubmissionCompiler');
-            break;
-        }
-
-        case '.c': {
-            compiler = getPreference('language.c.SubmissionCompiler');
-            break;
-        }
-
-        case '.rs': {
-            compiler = getPreference('language.rust.SubmissionCompiler');
-            break;
-        }
-
-        case '.py': {
-            compiler = getPreference('language.python.SubmissionCompiler');
-            break;
-        }
-
-        case '.rb': {
-            compiler = getPreference('language.ruby.SubmissionCompiler');
-            break;
-        }
-
-        case '.go': {
-            compiler = getPreference('language.go.SubmissionCompiler');
-            break;
-        }
-
-        case '.hs': {
-            compiler = getPreference('language.haskell.SubmissionCompiler');
-            break;
-        }
-    }
-    if (compiler == null) return -1;
-    for (const [_compiler, id] of Object.entries(config.compilerToId)) {
-        if (_compiler === compiler) {
-            return id;
-        }
-    }
-    console.error("Couldn't find id for compiler " + compiler);
-    return -1;
-};

@@ -13,31 +13,22 @@ export type prefSection =
     | 'general.useShortCodeForcesName'
     | 'general.menuChoices'
     | 'language.c.Args'
-    | 'language.c.SubmissionCompiler'
     | 'language.c.Command'
     | 'language.cpp.Args'
-    | 'language.cpp.SubmissionCompiler'
     | 'language.cpp.Command'
     | 'language.go.Args'
-    | 'language.go.SubmissionCompiler'
     | 'language.go.Command'
     | 'language.rust.Args'
-    | 'language.rust.SubmissionCompiler'
     | 'language.rust.Command'
     | 'language.java.Args'
-    | 'language.java.SubmissionCompiler'
     | 'language.java.Command'
     | 'language.js.Args'
-    | 'language.js.SubmissionCompiler'
     | 'language.js.Command'
     | 'language.python.Args'
-    | 'language.python.SubmissionCompiler'
     | 'language.python.Command'
     | 'language.ruby.Args'
-    | 'language.ruby.SubmissionCompiler'
     | 'language.ruby.Command'
     | 'language.haskell.Args'
-    | 'language.haskell.SubmissionCompiler'
     | 'language.haskell.Command'
     | 'general.retainWebviewContext'
     | 'general.autoShowJudge'
@@ -129,13 +120,6 @@ export type DeleteTcsCommand = {
     command: 'delete-tcs';
 } & WebviewMessageCommon;
 
-export type SubmitCf = {
-    command: 'submitCf';
-} & WebviewMessageCommon;
-
-export type SubmitKattis = {
-    command: 'submitKattis';
-} & WebviewMessageCommon;
 
 export type GetInitialProblem = {
     command: 'get-initial-problem';
@@ -158,9 +142,7 @@ export type WebviewToVSEvent =
     | KillRunningCommand
     | SaveCommand
     | DeleteTcsCommand
-    | SubmitCf
     | OnlineJudgeEnv
-    | SubmitKattis
     | OpenUrl;
 
 export type RunningCommand = {
@@ -189,14 +171,6 @@ export type RunAllInWebViewCommand = {
     command: 'run-all';
 };
 
-export type WaitingForSubmitCommand = {
-    command: 'waiting-for-submit';
-};
-
-export type SubmitFinishedCommand = {
-    command: 'submit-finished';
-};
-
 export type NewProblemCommand = {
     command: 'new-problem';
     problem: Problem | undefined;
@@ -213,8 +187,6 @@ export type VSToWebViewMessage =
     | RunAllInWebViewCommand
     | CompilingStartCommand
     | CompilingStopCommand
-    | WaitingForSubmitCommand
-    | SubmitFinishedCommand
     | NotRunningCommand
     | RemoteMessageCommand
     | NewProblemCommand;

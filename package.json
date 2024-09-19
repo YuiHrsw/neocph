@@ -1,11 +1,11 @@
 {
-    "name": "competitive-programming-helper",
+    "name": "cph-neo",
     "displayName": "CPH Neo",
-    "description": "Makes judging, compiling, and downloading problems for competitve programming easy. Also supports auto-submit for a few sites.",
+    "description": "Competitive Programming Judge Tool",
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "2024.9.18",
+    "version": "2024.9.19",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -77,14 +77,6 @@
                     "default": "",
                     "description": "Space seperated additional flags passed to gcc ( for C ) while compiling your file. Example '-O2 -Wall'"
                 },
-                "cph.language.c.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "GNU GCC C11 5.1.0",
-                    "enum": [
-                        "GNU GCC C11 5.1.0"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for c"
-                },
                 "cph.language.c.Command": {
                     "type": "string",
                     "default": "gcc",
@@ -95,22 +87,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to g++ ( for C++ ) while compiling your file. Example '-Wmaybe-uninitialized -std=c++14'"
-                },
-                "cph.language.cpp.SubmissionCompiler": {
-                    "type": "string",
-                    "title": "check12344566",
-                    "default": "GNU G++17 7.3.0",
-                    "enum": [
-                        "GNU G++17 7.3.0",
-                        "GNU G++14 6.4.0",
-                        "GNU G++11 5.1.0",
-                        "GNU G++17 9.2.0 (64 bit, msys 2)",
-                        "GNU G++20 13.2 (64 bit, winlibs)",
-                        "Microsoft Visual C++ 2017",
-                        "Microsoft Visual C++ 2010",
-                        "Clang++17 Diagnostics"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for cpp"
                 },
                 "cph.language.cpp.Command": {
                     "type": "string",
@@ -123,18 +99,6 @@
                     "default": "",
                     "description": "Space seperated additional flags passed to python while compiling your file. Example '-Wignore -u'"
                 },
-                "cph.language.python.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "PyPy 3.9.10 (7.3.9, 64bit)",
-                    "enum": [
-                        "PyPy 3.6 (7.2.0)",
-                        "PyPy 3.9.10 (7.3.9, 64bit)",
-                        "Python 3.7.2",
-                        "PyPy 2.7 (7.2.0)",
-                        "Python 2.7.15"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for python"
-                },
                 "cph.language.python.Command": {
                     "type": "string",
                     "default": "python3",
@@ -145,14 +109,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to ruby while compiling your file."
-                },
-                "cph.language.ruby.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Ruby 3.2.2",
-                    "enum": [
-                        "Ruby 3.2.2"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for python"
                 },
                 "cph.language.ruby.Command": {
                     "type": "string",
@@ -165,14 +121,6 @@
                     "default": "",
                     "description": "Space seperated additional flags passed to rustc while compiling your file. Example '-O2 --verbose'"
                 },
-                "cph.language.rust.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Rust 1.66.0 (2021)",
-                    "enum": [
-                        "Rust 1.66.0 (2021)"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for rust"
-                },
                 "cph.language.rust.Command": {
                     "type": "string",
                     "default": "rustc",
@@ -183,14 +131,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to go while compiling your file. Example '-gcflags=-S'"
-                },
-                "cph.language.go.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Go 1.19.5",
-                    "enum": [
-                        "Go 1.19.5"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for go"
                 },
                 "cph.language.go.Command": {
                     "type": "string",
@@ -203,14 +143,6 @@
                     "default": "",
                     "description": "Space seperated additional flags passed to go while compiling your file."
                 },
-                "cph.language.haskell.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Haskell GHC 8.10.1",
-                    "enum": [
-                        "Haskell GHC 8.10.1"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for haskell"
-                },
                 "cph.language.haskell.Command": {
                     "type": "string",
                     "default": "ghc",
@@ -222,15 +154,6 @@
                     "default": "",
                     "description": "Space seperated additional flags passed to javac while compiling your file. Example '-verbose'"
                 },
-                "cph.language.java.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Java 11.0.6",
-                    "enum": [
-                        "Java 11.0.6",
-                        "Java 1.8.0_241"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for java"
-                },
                 "cph.language.java.Command": {
                     "type": "string",
                     "default": "javac",
@@ -241,14 +164,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to node (for JavaScript) while compiling your file. Example '--abort-on-uncaught-exception'"
-                },
-                "cph.language.js.SubmissionCompiler": {
-                    "type": "string",
-                    "default": "Node.js 15.8.0 (64bit)",
-                    "enum": [
-                        "Node.js 15.8.0 (64bit)"
-                    ],
-                    "description": "The compiler chosen in the drop down during Codeforces submission for js"
                 },
                 "cph.language.js.Command": {
                     "type": "string",
