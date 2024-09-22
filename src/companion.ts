@@ -5,7 +5,7 @@ import { saveProblem } from './parser';
 import * as vscode from 'vscode';
 import path from 'path';
 import { writeFileSync, readFileSync, existsSync } from 'fs';
-import { isCodeforcesUrl, randomId } from './utils';
+import { checkUnsupported, isCodeforcesUrl, randomId } from './utils';
 import {
     getDefaultLangPref,
     useShortCodeForcesName,
@@ -126,8 +126,19 @@ const handleNewProblem = async (problem: Problem) => {
         const splitUrl = problem.url.split('/');
         problem.name = splitUrl[splitUrl.length - 1];
     }
-    const problemFileName = getProblemFileName(problem, extn);
-    const srcPath = path.join(folder, problemFileName);
+    // const problemFileName = getProblemFileName(problem, extn);
+    // const srcPath = path.join(folder, problemFileName);
+
+    const editor = vscode.window.activeTextEditor;
+
+    if (editor === undefined) {
+        checkUnsupported('');
+        return;
+    }
+    const srcPath = editor.document.fileName;
+    if (checkUnsupported(srcPath)) {
+        return;
+    }
 
     // Add fields absent in competitive companion.
     problem.srcPath = srcPath;
@@ -136,7 +147,8 @@ const handleNewProblem = async (problem: Problem) => {
         id: randomId(),
     }));
     if (!existsSync(srcPath)) {
-        writeFileSync(srcPath, '');
+        vscode.window.showErrorMessage(`File ${srcPath} does not exist.`);
+        return;
     }
     saveProblem(srcPath, problem);
     const doc = await vscode.workspace.openTextDocument(srcPath);
