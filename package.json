@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "2024.9.19",
+    "version": "2024.9.27",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -179,7 +179,7 @@
                 "cph.general.defaultLanguage": {
                     "title": "Default language for new problems",
                     "type": "string",
-                    "default": "cpp",
+                    "default": "python",
                     "enum": [
                         "none",
                         "c",
