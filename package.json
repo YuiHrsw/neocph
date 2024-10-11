@@ -1,11 +1,11 @@
 {
     "name": "cph-neo",
     "displayName": "CPH Neo",
-    "description": "Competitive Programming Judge Tool",
+    "description": "Make competitive programming in VSCode easier",
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "2024.9.27",
+    "version": "2024.10.11",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -49,7 +49,7 @@
             }
         ],
         "configuration": {
-            "title": "Competitive Programming Helper",
+            "title": "CPH Neo",
             "properties": {
                 "cph.general.saveLocation": {
                     "type": "string",
@@ -86,7 +86,7 @@
                     "title": "Compilation flags for .cpp files",
                     "type": "string",
                     "default": "",
-                    "description": "Space seperated additional flags passed to g++ ( for C++ ) while compiling your file. Example '-Wmaybe-uninitialized -std=c++14'"
+                    "description": "Space seperated additional flags passed to g++ ( for C++ ) while compiling your file. Example '-D_GLIBCXX_DEBUG -std=c++20'"
                 },
                 "cph.language.cpp.Command": {
                     "type": "string",
@@ -176,27 +176,6 @@
                     "default": true,
                     "description": "A welcome message is shown when you run a testcase for the first time. This setting is updated automatically after the first message is shown."
                 },
-                "cph.general.defaultLanguage": {
-                    "title": "Default language for new problems",
-                    "type": "string",
-                    "default": "python",
-                    "enum": [
-                        "none",
-                        "c",
-                        "cpp",
-                        "python",
-                        "rust",
-                        "js",
-                        "java",
-                        "ruby"
-                    ],
-                    "description": "The default language for problems imported via Competitive Companion (None will give option to select language on importing problem every time)"
-                },
-                "cph.general.menuChoices": {
-                    "type": "string",
-                    "default": "cpp java js python c rust ruby",
-                    "description": "Space separated languages, in top to bottom order, shown in menu when a problem is imported via Competitive Companion. Example 'java python' would show java on top, followed by python."
-                },
                 "cph.general.useShortCodeForcesName": {
                     "type": "boolean",
                     "default": false,
@@ -206,11 +185,6 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Keep the webview active even when it's hidden. May improve performance but may cause some rendering issues."
-                },
-                "cph.general.defaultLanguageTemplateFileLocation": {
-                    "type": "string",
-                    "default": "",
-                    "description": "The path of the template that will be loaded when a new file of the default language is created by Competitive Companion"
                 },
                 "cph.general.autoShowJudge": {
                     "type": "boolean",

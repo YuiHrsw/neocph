@@ -303,7 +303,7 @@ function Judge(props: {
             <div className="margin-10">
                 <div className="row">
                     <button
-                        className="btn btn-green"
+                        className="btn btn-pink"
                         onClick={newCase}
                         title="Create a new empty testcase"
                     >
@@ -489,7 +489,7 @@ function App() {
                             with it.
                         </p>
                         <br />
-                        <div className="btn btn-block" onClick={createProblem}>
+                        <div className="btn btn-pink" onClick={createProblem}>
                             <span className="icon">
                                 <i className="codicon codicon-add"></i>
                             </span>{' '}
