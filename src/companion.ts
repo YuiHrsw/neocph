@@ -95,26 +95,26 @@ const handleNewProblem = async (problem: Problem) => {
         vscode.window.showInformationMessage('Please open a folder first.');
         return;
     }
-    const defaultLanguage = getDefaultLangPref();
-    let extn: string;
+    // const defaultLanguage = getDefaultLangPref();
+    // let extn: string;
 
-    if (defaultLanguage == null) {
-        const allChoices = new Set(Object.keys(config.extensions));
-        const userChoices = getMenuChoices();
-        const choices = userChoices.filter((x) => allChoices.has(x));
-        const selected = await vscode.window.showQuickPick(choices);
-        if (!selected) {
-            vscode.window.showInformationMessage(
-                'Aborted creation of new file',
-            );
-            return;
-        }
-        // @ts-ignore
-        extn = config.extensions[selected];
-    } else {
-        //@ts-ignore
-        extn = config.extensions[defaultLanguage];
-    }
+    // if (defaultLanguage == null) {
+    //     const allChoices = new Set(Object.keys(config.extensions));
+    //     const userChoices = getMenuChoices();
+    //     const choices = userChoices.filter((x) => allChoices.has(x));
+    //     const selected = await vscode.window.showQuickPick(choices);
+    //     if (!selected) {
+    //         vscode.window.showInformationMessage(
+    //             'Aborted creation of new file',
+    //         );
+    //         return;
+    //     }
+    //     // @ts-ignore
+    //     extn = config.extensions[selected];
+    // } else {
+    //     //@ts-ignore
+    //     extn = config.extensions[defaultLanguage];
+    // }
     let url: URL;
     try {
         url = new URL(problem.url);
@@ -153,21 +153,21 @@ const handleNewProblem = async (problem: Problem) => {
     saveProblem(srcPath, problem);
     const doc = await vscode.workspace.openTextDocument(srcPath);
 
-    if (defaultLanguage) {
-        const templateLocation = getDefaultLanguageTemplateFileLocation();
-        if (templateLocation !== null) {
-            const templateExists = existsSync(templateLocation);
-            if (!templateExists) {
-                vscode.window.showErrorMessage(
-                    `Template file does not exist: ${templateLocation}`,
-                );
-            } else {
-                const templateContents =
-                    readFileSync(templateLocation).toString();
-                writeFileSync(srcPath, templateContents);
-            }
-        }
-    }
+    // if (defaultLanguage) {
+    //     const templateLocation = getDefaultLanguageTemplateFileLocation();
+    //     if (templateLocation !== null) {
+    //         const templateExists = existsSync(templateLocation);
+    //         if (!templateExists) {
+    //             vscode.window.showErrorMessage(
+    //                 `Template file does not exist: ${templateLocation}`,
+    //             );
+    //         } else {
+    //             const templateContents =
+    //                 readFileSync(templateLocation).toString();
+    //             writeFileSync(srcPath, templateContents);
+    //         }
+    //     }
+    // }
 
     await vscode.window.showTextDocument(doc, vscode.ViewColumn.One);
     getJudgeViewProvider().extensionToJudgeViewMessage({

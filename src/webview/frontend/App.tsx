@@ -365,7 +365,7 @@ function Judge(props: {
                         title="Kill all running testcases"
                     >
                         <span className="icon">
-                            <i className="codicon codicon-circle-slash"></i>
+                            <i className="codicon codicon-debug-stop"></i>
                         </span>{' '}
                         <span className="action-text">Stop</span>
                     </button>
@@ -375,7 +375,7 @@ function Judge(props: {
                         title="Delete all testcases and close results window"
                     >
                         <span className="icon">
-                            <i className="codicon codicon-trash"></i>
+                            <i className="codicon codicon-close"></i>
                         </span>{' '}
                         <span className="action-text">Delete</span>
                     </button>

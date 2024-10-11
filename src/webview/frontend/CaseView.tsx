@@ -173,7 +173,7 @@ export default function CaseView(props: {
                         }}
                     >
                         <span className="icon">
-                            <i className="codicon codicon-trash"></i>
+                            <i className="codicon codicon-close"></i>
                         </span>{' '}
                     </button>
                 </div>
