@@ -2,7 +2,7 @@
 
 This document contains a basic developer guide to get started with the extension
 development. In case of any confusions/ need for additional information, please
-create an issue in the [repo](https://github.com/YuiHrsw/cph). You should also
+create an issue in the [repo](https://github.com/YuiHrsw/neocph). You should also
 take a look at the [user guide](user-guide.md) to understand the
 user-facingterms.
 
@@ -67,4 +67,4 @@ Then, in the root directory, run `vsce package` to generate the extension file.
 ## Getting help
 
 To discuss ideas and problems while development, please create an issue in the
-[repo](https://github.com/YuiHrsw/cph).
+[repo](https://github.com/YuiHrsw/neocph).

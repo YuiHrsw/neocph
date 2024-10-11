@@ -3,28 +3,22 @@ import config from './config';
 import { Problem, CphSubmitResponse, CphEmptyResponse } from './types';
 import { saveProblem } from './parser';
 import * as vscode from 'vscode';
-import path from 'path';
-import { writeFileSync, readFileSync, existsSync } from 'fs';
+import { existsSync } from 'fs';
 import { checkUnsupported, isCodeforcesUrl, randomId } from './utils';
-import {
-    getDefaultLangPref,
-    useShortCodeForcesName,
-    getMenuChoices,
-    getDefaultLanguageTemplateFileLocation,
-} from './preferences';
+import { useShortCodeForcesName } from './preferences';
 import { getProblemName } from './submit';
 import { getJudgeViewProvider } from './extension';
 import { words_in_text } from './utilsPure';
 import telmetry from './telmetry';
 
 const emptyResponse: CphEmptyResponse = { empty: true };
-let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
+const savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
 const COMPANION_LOGGING = false;
 
 export const setupCompanionServer = () => {
     try {
         const server = http.createServer((req, res) => {
-            const { headers } = req;
+            // const { headers } = req;
             let rawProblem = '';
 
             req.on('data', (chunk) => {
@@ -51,9 +45,7 @@ export const setupCompanionServer = () => {
         });
         server.listen(config.port);
         server.on('error', (err) => {
-            vscode.window.showErrorMessage(
-                err.message,
-            );
+            vscode.window.showErrorMessage(err.message);
         });
         console.log('Companion server listening on port', config.port);
         return server;

@@ -59,10 +59,10 @@ export function activate(context: vscode.ExtensionContext) {
 
     downloadRemoteMessage();
 
-    const statusBarItem = vscode.window.createStatusBarItem(
-        vscode.StatusBarAlignment.Left,
-        1000,
-    );
+    // const statusBarItem = vscode.window.createStatusBarItem(
+    //     vscode.StatusBarAlignment.Left,
+    //     1000,
+    // );
     // statusBarItem.text = ' $(run-all)  Run Testcases';
     // statusBarItem.tooltip =
     //     'Competitive Programming Helper - Run all testcases or create if none exist.';

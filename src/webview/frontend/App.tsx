@@ -33,19 +33,19 @@ function Judge(props: {
     const [compiling, setCompiling] = useState<boolean>(false);
     const [notification, setNotification] = useState<string | null>(null);
     const [onlineJudgeEnv, setOnlineJudgeEnv] = useState<boolean>(false);
-    const [webviewState, setWebviewState] = useState<WebViewpersistenceState>(
-        () => {
-            const vscodeState = vscodeApi.getState();
-            const ret = {
-                dialogCloseDate: vscodeState?.dialogCloseDate || Date.now(),
-            };
-            vscodeApi.setState(ret);
-            console.log('Restored to state:', ret);
-            return ret;
-        },
-    );
+    // const [webviewState, setWebviewState] = useState<WebViewpersistenceState>(
+    //     () => {
+    //         const vscodeState = vscodeApi.getState();
+    //         const ret = {
+    //             dialogCloseDate: vscodeState?.dialogCloseDate || Date.now(),
+    //         };
+    //         vscodeApi.setState(ret);
+    //         console.log('Restored to state:', ret);
+    //         return ret;
+    //     },
+    // );
 
-    console.log(webviewState);
+    // console.log(webviewState);
 
     // Update problem if cases change. The only place where `updateProblem` is
     // allowed to ensure sync.
@@ -57,14 +57,14 @@ function Judge(props: {
         });
     }, [cases]);
 
-    const closeDonateBox = () => {
-        const newState = {
-            ...webviewState,
-            dialogCloseDate: Date.now(),
-        };
-        setWebviewState(newState);
-        vscodeApi.setState(newState);
-    };
+    // const closeDonateBox = () => {
+    //     const newState = {
+    //         ...webviewState,
+    //         dialogCloseDate: Date.now(),
+    //     };
+    //     setWebviewState(newState);
+    //     vscodeApi.setState(newState);
+    // };
 
     const sendMessageToVSCode = (message: WebviewToVSEvent) => {
         vscodeApi.postMessage(message);

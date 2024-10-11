@@ -67,4 +67,4 @@ Several options are available to customize the extension. Open VS Code settings
 ## Getting help
 
 If you have trouble using the extension, find any bugs, or want to request a new
-feature, please create an issue [here](https://github.com/YuiHrsw/cph/issues).
+feature, please create an issue [here](https://github.com/YuiHrsw/neocph/issues).

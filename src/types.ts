@@ -120,7 +120,6 @@ export type DeleteTcsCommand = {
     command: 'delete-tcs';
 } & WebviewMessageCommon;
 
-
 export type GetInitialProblem = {
     command: 'get-initial-problem';
 };

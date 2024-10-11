@@ -112,4 +112,3 @@ export const getHaskellCommand = (): string =>
 
 export const getMenuChoices = (): string[] =>
     getPreference('general.menuChoices').split(' ');
-

@@ -159,8 +159,8 @@ export const compileFile = async (srcPath: string): Promise<boolean> => {
             console.error(err);
             ocWrite(
                 'Errors while compiling:\n' +
-                err.message +
-                `\n\nHint: Is the compiler ${language.compiler} installed? Check the compiler command in cph settings for the current language.`,
+                    err.message +
+                    `\n\nHint: Is the compiler ${language.compiler} installed? Check the compiler command in cph settings for the current language.`,
             );
             getJudgeViewProvider().extensionToJudgeViewMessage({
                 command: 'compiling-stop',
@@ -195,7 +195,7 @@ export const compileFile = async (srcPath: string): Promise<boolean> => {
             if (!hideWarningsWhenCompiledOK && error.trim() !== '') {
                 ocWrite(
                     `Exit code: ${exitCode} Warnings while compiling:\n ` +
-                    error,
+                        error,
                 );
                 ocShow();
             }

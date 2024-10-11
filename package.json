@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "2024.10.11",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -238,6 +238,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/YuiHrsw/cph"
+        "url": "https://github.com/YuiHrsw/neocph"
     }
 }

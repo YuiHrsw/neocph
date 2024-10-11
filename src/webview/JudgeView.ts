@@ -23,7 +23,7 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
         return this._view === undefined;
     }
 
-    constructor(private readonly _extensionUri: vscode.Uri) { }
+    constructor(private readonly _extensionUri: vscode.Uri) {}
 
     public resolveWebviewView(webviewView: vscode.WebviewView) {
         this._view = webviewView;
