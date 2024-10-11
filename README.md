@@ -1,22 +1,21 @@
-# CPH Neo
+# neocph
+
+> neocph is a simpler, faster, and better looking version of cph.
 
 Quickly compile, run and judge competitive programming problems in VS Code.
 Automatically download testcases , or write & test your own problems.
 
-Cph supports a large number of popular platforms like Codeforces, Codechef,
+neocph supports a large number of popular platforms like Codeforces, Codechef,
 TopCoder etc. with the help of competitive companion browser extension
 
 ![Screenshot](screenshots/screenshot-main.png)
 
 ## Quick start
 
-1. Install cph in VS Code and open any folder.
-1. Install [competitive companion](https://github.com/jmerle/competitive-companion#readme)
-   in your browser.
-1. Use Companion by pressing the green plus (+) circle from the browser toolbar
-   when visiting any problem page.
-1. The file opens in VS Code with testcases preloaded. Press
-   <kbd>Ctrl</kbd>+<kbd>R</kbd> to run them.
+1. Open any folder and create a problem file.
+1. [Optional] Install [Competitive Companion](https://github.com/jmerle/competitive-companion#readme)
+   in your browser to parse the testcases.
+1. Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to run your code.
 
 ## Features
 
@@ -55,7 +54,7 @@ The extension collects basic events defined in `src/telmetry.ts`. To disable,
 modify the setting `telemetry.telemetryLevel` (applies to all VSCode
 extensions).
 
-## License
+## Original License
 
 Copyright (C) 2023 Divyanshu Agrawal
 

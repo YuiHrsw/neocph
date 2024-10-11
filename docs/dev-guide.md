@@ -1,8 +1,8 @@
-# cph development guide
+# neocph development guide
 
 This document contains a basic developer guide to get started with the extension
 development. In case of any confusions/ need for additional information, please
-create an issue in the [repo](https://github.com/agrawal-d/cph). You should also
+create an issue in the [repo](https://github.com/YuiHrsw/cph). You should also
 take a look at the [user guide](user-guide.md) to understand the
 user-facingterms.
 
@@ -27,19 +27,6 @@ The extension is integrated with the
 [competitive companion](https://github.com/jmerle/competitive-companion) browser
 extension. Our extension runs a HTTP server on port `27121`, and companion
 `POST`s a new problem to this server, and we process it.
-
-## Kattis Auto-Submit Integration
-
-The extension summons a python shell when the `Submit to Kattis` button is
-clicked, calling the
-[Kattis submission client python file](https://github.com/Kattis/kattis-cli/blob/main/submit.py),
-with tag `-f` to force the guessing of the submission. This is ensured to work
-as the naming system for Kattis problems uses the problem ID. The
-[Kattis configuration file](https://open.kattis.com/help/submit) is also needed
-for submission.
-
-The submission process checks for these two files in a `.kattisrc` folder in the
-home directory of the user.
 
 ## Developer Tools
 
@@ -80,4 +67,4 @@ Then, in the root directory, run `vsce package` to generate the extension file.
 ## Getting help
 
 To discuss ideas and problems while development, please create an issue in the
-[repo](https://github.com/agrawal-d/cph).
+[repo](https://github.com/YuiHrsw/cph).
