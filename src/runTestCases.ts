@@ -6,7 +6,6 @@ import { compileFile } from './compiler';
 import runAllAndSave from './webview/processRunAll';
 import path from 'path';
 import { getJudgeViewProvider } from './extension';
-import telmetry from './telmetry';
 
 /**
  * Execution for the run testcases command. Runs all testcases for the active
@@ -15,7 +14,6 @@ import telmetry from './telmetry';
  * create an empty testcases file and show it in the results section.
  */
 export default async () => {
-    globalThis.reporter.sendTelemetryEvent(telmetry.RUN_ALL_TESTCASES);
     console.log('Running command "runTestCases"');
     const editor = vscode.window.activeTextEditor;
     if (editor === undefined) {
@@ -52,7 +50,6 @@ export default async () => {
 };
 
 const createLocalProblem = async (editor: vscode.TextEditor) => {
-    globalThis.reporter.sendTelemetryEvent(telmetry.NEW_LOCAL_PROBLEM);
     console.log('Creating local problem');
     const srcPath = editor.document.fileName;
     if (checkUnsupported(srcPath)) {

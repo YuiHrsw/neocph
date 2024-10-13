@@ -8,6 +8,7 @@ import {
 } from './preferences';
 import * as vscode from 'vscode';
 import { getJudgeViewProvider } from './extension';
+import { platform } from 'os';
 export let onlineJudgeEnv = false;
 
 export const setOnlineJudgeEnv = (value: boolean) => {
@@ -29,7 +30,8 @@ export const getBinSaveLocation = (srcPath: string): string => {
     if (language.skipCompile) {
         return srcPath;
     }
-    const ext = language.name == 'java' ? '*.class' : '.bin';
+    let ext = language.name == 'java' ? '*.class' : '.bin';
+    if (platform() === 'win32' && ext == '.bin') ext = '.exe';
     const savePreference = getSaveLocationPref();
     const srcFileName = path.parse(srcPath).name;
     const binFileName = srcFileName + ext;

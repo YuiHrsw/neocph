@@ -5,11 +5,8 @@ import { saveProblem } from './parser';
 import * as vscode from 'vscode';
 import { existsSync } from 'fs';
 import { checkUnsupported, isCodeforcesUrl, randomId } from './utils';
-import { useShortCodeForcesName } from './preferences';
-import { getProblemName } from './submit';
 import { getJudgeViewProvider } from './extension';
 import { words_in_text } from './utilsPure';
-import telmetry from './telmetry';
 
 const emptyResponse: CphEmptyResponse = { empty: true };
 const savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
@@ -55,26 +52,18 @@ export const setupCompanionServer = () => {
 };
 
 export const getProblemFileName = (problem: Problem, ext: string) => {
-    if (isCodeforcesUrl(new URL(problem.url)) && useShortCodeForcesName()) {
-        return `${getProblemName(problem.url)}.${ext}`;
-    } else {
-        console.log(
-            isCodeforcesUrl(new URL(problem.url)),
-            useShortCodeForcesName(),
-        );
+    console.log(isCodeforcesUrl(new URL(problem.url)));
 
-        const words = words_in_text(problem.name);
-        if (words === null) {
-            return `${problem.name.replace(/\W+/g, '_')}.${ext}`;
-        } else {
-            return `${words.join('_')}.${ext}`;
-        }
+    const words = words_in_text(problem.name);
+    if (words === null) {
+        return `${problem.name.replace(/\W+/g, '_')}.${ext}`;
+    } else {
+        return `${words.join('_')}.${ext}`;
     }
 };
 
 /** Handle the `problem` sent by Competitive Companion, such as showing the webview, opening an editor, managing layout etc. */
 const handleNewProblem = async (problem: Problem) => {
-    globalThis.reporter.sendTelemetryEvent(telmetry.GET_PROBLEM_FROM_COMPANION);
     // If webview may be focused, close it, to prevent layout bug.
     if (vscode.window.activeTextEditor == undefined) {
         getJudgeViewProvider().extensionToJudgeViewMessage({

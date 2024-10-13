@@ -69,28 +69,6 @@ export const getJsArgsPref = (): string[] =>
 export const getGoArgsPref = (): string[] =>
     getPreference('language.go.Args').split(' ') || [];
 
-export const getFirstTimePref = (): boolean =>
-    getPreference('general.firstTime') || 'true';
-
-export const getDefaultLangPref = (): string | null => {
-    const pref = getPreference('general.defaultLanguage');
-    if (pref === 'none' || pref == ' ' || !pref) {
-        return null;
-    }
-    return pref;
-};
-
-export const useShortCodeForcesName = (): boolean => {
-    return getPreference('general.useShortCodeForcesName');
-};
-export const getDefaultLanguageTemplateFileLocation = (): string | null => {
-    const pref = getPreference('general.defaultLanguageTemplateFileLocation');
-    if (pref === '') {
-        return null;
-    }
-    return pref;
-};
-
 export const getCCommand = (): string =>
     getPreference('language.c.Command') || 'gcc';
 export const getCppCommand = (): string =>
@@ -109,6 +87,3 @@ export const getGoCommand = (): string =>
     getPreference('language.go.Command') || 'go';
 export const getHaskellCommand = (): string =>
     getPreference('language.haskell.Command') || 'ghc';
-
-export const getMenuChoices = (): string[] =>
-    getPreference('general.menuChoices').split(' ');

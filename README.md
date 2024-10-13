@@ -13,7 +13,8 @@ TopCoder etc. with the help of competitive companion browser extension
 ## Quick start
 
 1. Open any folder and create a problem file.
-1. [Optional] Install [Competitive Companion](https://github.com/jmerle/competitive-companion#readme)
+1. [Optional] Install
+   [Competitive Companion](https://github.com/jmerle/competitive-companion#readme)
    in your browser to parse the testcases.
 1. Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to run your code.
 
@@ -47,12 +48,6 @@ You can contribute to this extension in many ways:
 
 **Before creating a Pull Request, please create an issue to discuss the
 approach. It makes reviewing and accepting the PR much easier.**
-
-## Telemetry
-
-The extension collects basic events defined in `src/telmetry.ts`. To disable,
-modify the setting `telemetry.telemetryLevel` (applies to all VSCode
-extensions).
 
 ## Original License
 

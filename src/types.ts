@@ -5,13 +5,9 @@ import * as vscode from 'vscode';
 /** Valid name for a VS Code preference section for the extension */
 export type prefSection =
     | 'general.saveLocation'
-    | 'general.defaultLanguage'
     | 'general.timeOut'
     | 'general.hideStderrorWhenCompiledOK'
     | 'general.ignoreSTDERROR'
-    | 'general.firstTime'
-    | 'general.useShortCodeForcesName'
-    | 'general.menuChoices'
     | 'language.c.Args'
     | 'language.c.Command'
     | 'language.cpp.Args'
@@ -31,8 +27,7 @@ export type prefSection =
     | 'language.haskell.Args'
     | 'language.haskell.Command'
     | 'general.retainWebviewContext'
-    | 'general.autoShowJudge'
-    | 'general.defaultLanguageTemplateFileLocation';
+    | 'general.autoShowJudge';
 
 export type Language = {
     name: LangNames;
