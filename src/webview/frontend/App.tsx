@@ -79,11 +79,6 @@ function Judge(props: {
                     break;
                 }
 
-                case 'remote-message': {
-                    window.remoteMessage = data.message;
-                    break;
-                }
-
                 case 'running': {
                     handleRunning(data);
                     break;
@@ -325,15 +320,6 @@ function Judge(props: {
                         Set <code>ONLINE_JUDGE</code>
                     </span>
                 </span>
-                <br />
-                <br />
-                <div className="remote-message">
-                    <p
-                        dangerouslySetInnerHTML={{
-                            __html: window.remoteMessage || '',
-                        }}
-                    />
-                </div>
             </div>
             <div className="actions">
                 <div className="row">

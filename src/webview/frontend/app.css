@@ -82,11 +82,6 @@ body {
     border-radius: 4px;
 }
 
-.remote-message a {
-    text-decoration: underline;
-    color: var(--vscode-textLink-foreground);
-}
-
 a.btn {
     display: inline-block;
 }

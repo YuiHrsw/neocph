@@ -175,11 +175,6 @@ export type NewProblemCommand = {
     problem: Problem | undefined;
 };
 
-export type RemoteMessageCommand = {
-    command: 'remote-message';
-    message: string;
-};
-
 export type VSToWebViewMessage =
     | ResultCommand
     | RunningCommand
@@ -187,7 +182,6 @@ export type VSToWebViewMessage =
     | CompilingStartCommand
     | CompilingStopCommand
     | NotRunningCommand
-    | RemoteMessageCommand
     | NewProblemCommand;
 
 export type CphEmptyResponse = {

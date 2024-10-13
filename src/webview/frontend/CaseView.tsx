@@ -133,7 +133,7 @@ export default function CaseView(props: {
                                 </span>
                             </span>
                         )}
-                        &nbsp;Testcase {props.num}
+                        &nbsp;Test {props.num}
                     </span>
                     {running && <span className="running-text">Running</span>}
                     {result && !running && (
