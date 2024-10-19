@@ -5,16 +5,14 @@
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "engines": {
         "vscode": "^1.52.0"
     },
     "categories": [
         "Other"
     ],
-    "activationEvents": [
-        "onEditSession:file"
-    ],
+    "activationEvents": [],
     "main": "dist/extension.js",
     "contributes": {
         "viewsContainers": {

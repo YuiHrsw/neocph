@@ -172,7 +172,7 @@ export const deleteProblemFile = (srcPath: string) => {
     const probPath = getProbSaveLocation(srcPath);
     try {
         if (platform() === 'win32') {
-            spawn('del', [probPath]);
+            spawn('del', [probPath], { shell: true });
         } else {
             spawn('rm', [probPath]);
         }
