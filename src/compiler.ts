@@ -56,12 +56,7 @@ const getFlags = (language: Language, srcPath: string): string[] => {
     let ret: string[];
     switch (language.name) {
         case 'cpp': {
-            ret = [
-                srcPath,
-                '-o',
-                getBinSaveLocation(srcPath),
-                ...args,
-            ];
+            ret = [srcPath, '-o', getBinSaveLocation(srcPath), ...args];
             if (onlineJudgeEnv) {
                 ret.push('-D');
                 ret.push('ONLINE_JUDGE');
