@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+-   update testcase UI
+
 ## 1.0.3
 
 -   bug fixes

@@ -61,8 +61,6 @@ const getFlags = (language: Language, srcPath: string): string[] => {
                 '-o',
                 getBinSaveLocation(srcPath),
                 ...args,
-                '-D',
-                'DEBUG',
             ];
             if (onlineJudgeEnv) {
                 ret.push('-D');
