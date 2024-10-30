@@ -6,7 +6,6 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
         'plugin:react/recommended',
     ],
     globals: {
@@ -18,9 +17,8 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint', 'prettier'],
+    plugins: ['@typescript-eslint'],
     rules: {
-        'prettier/prettier': 'error',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/prefer-namespace-keyword': 'off',

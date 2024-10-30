@@ -49,11 +49,11 @@ The launch config is in `.vscode/launch/json`. To launch the extension, just
 press `F5`. It will bundle the extension using Webpack first, saving the output
 in `dist/`.
 
-We recommend installing `Prettier` and `ESLint` VS Code extensions. Before
+We recommend installing `ESLint` VS Code extensions. Before
 commiting, make sure you are passing the following tests:
 
 -   ESLint lint: `npm run lint`.
--   Jest unit tests: `npm run jest`.
+-   Jest unit tests: `npm run test`.
 -   Typescript compilation: `npm run test-compile`.
 -   Pre-publish bundling: `npm run vscode:prepublish`.
 
