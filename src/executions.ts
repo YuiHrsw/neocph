@@ -92,6 +92,14 @@ export const runTestCase = (
             process = spawn('java', args);
             break;
         }
+        case 'cs': {
+            process = spawn(
+                language.compiler,
+                [binPath],
+                spawnOpts,
+            );
+            break;
+        }
         default: {
             process = spawn(binPath, spawnOpts);
         }

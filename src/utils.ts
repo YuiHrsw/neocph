@@ -119,6 +119,14 @@ export const getLanguage = (srcPath: string): Language => {
                 skipCompile: false,
             };
         }
+        case 'cs': {
+            return {
+                name: langName,
+                args: [],
+                compiler: 'dotnet-script',
+                skipCompile: true,
+            };
+        }
     }
     throw new Error('Invalid State');
 };
