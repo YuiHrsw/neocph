@@ -17,6 +17,7 @@ export default {
         js: 'js',
         go: 'go',
         hs: 'hs',
+        cs: 'csx',
     },
     compilers: {
         c: 'gcc',
@@ -28,6 +29,7 @@ export default {
         js: 'node',
         go: 'go',
         hs: 'hs',
+        cs: 'dotnet-script',
     },
     supportedExtensions: [
         'py',
@@ -39,6 +41,7 @@ export default {
         'go',
         'hs',
         'rb',
+        'csx',
     ],
-    skipCompile: ['py', 'js', 'rb'],
+    skipCompile: ['py', 'js', 'rb', 'csx'],
 };

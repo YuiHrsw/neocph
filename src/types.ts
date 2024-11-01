@@ -45,7 +45,8 @@ export type LangNames =
     | 'java'
     | 'js'
     | 'go'
-    | 'hs';
+    | 'hs'
+    | 'cs';
 
 export type TestCase = {
     input: string;
