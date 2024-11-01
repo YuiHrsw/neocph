@@ -8,8 +8,6 @@ Automatically download testcases , or write & test your own problems.
 neocph supports a large number of popular platforms like Codeforces, Codechef,
 TopCoder etc. with the help of competitive companion browser extension
 
-![Screenshot](screenshots/screenshot-main.png)
-
 ## Quick start
 
 1. Open any folder and create a problem file.
@@ -32,11 +30,8 @@ TopCoder etc. with the help of competitive companion browser extension
 -   C
 -   Rust
 -   Go
--   Haskell
 -   Python
--   Ruby
 -   Java
--   JavaScript (Node.js)
 
 ## Contributing
 

@@ -51,20 +51,11 @@ export const getCArgsPref = (): string[] =>
 export const getPythonArgsPref = (): string[] =>
     getPreference('language.python.Args').split(' ') || [];
 
-export const getRubyArgsPref = (): string[] =>
-    getPreference('language.ruby.Args').split(' ').filter(Boolean) || [];
-
-export const getHaskellArgsPref = (): string[] =>
-    getPreference('language.haskell.Args').split(' ') || [];
-
 export const getRustArgsPref = (): string[] =>
     getPreference('language.rust.Args').split(' ') || [];
 
 export const getJavaArgsPref = (): string[] =>
     getPreference('language.java.Args').split(' ') || [];
-
-export const getJsArgsPref = (): string[] =>
-    getPreference('language.js.Args').split(' ') || [];
 
 export const getGoArgsPref = (): string[] =>
     getPreference('language.go.Args').split(' ') || [];
@@ -75,15 +66,9 @@ export const getCppCommand = (): string =>
     getPreference('language.cpp.Command') || 'g++';
 export const getPythonCommand = (): string =>
     getPreference('language.python.Command') || 'python3';
-export const getRubyCommand = (): string =>
-    getPreference('language.ruby.Command') || 'ruby';
 export const getRustCommand = (): string =>
     getPreference('language.rust.Command') || 'rustc';
 export const getJavaCommand = (): string =>
     getPreference('language.java.Command') || 'javac';
-export const getJsCommand = (): string =>
-    getPreference('language.js.Command') || 'node';
 export const getGoCommand = (): string =>
     getPreference('language.go.Command') || 'go';
-export const getHaskellCommand = (): string =>
-    getPreference('language.haskell.Command') || 'ghc';

@@ -31,11 +31,7 @@ export const runTestCase = (
     };
     const spawnOpts = {
         timeout: config.timeout,
-        env: {
-            ...global.process.env,
-            DEBUG: 'true',
-            CPH: 'true',
-        },
+        env: { ...global.process.env },
     };
 
     let process: ChildProcessWithoutNullStreams;
@@ -55,22 +51,6 @@ export const runTestCase = (
         case 'python': {
             process = spawn(
                 language.compiler, // 'python3' or 'python' TBD
-                [binPath, ...language.args],
-                spawnOpts,
-            );
-            break;
-        }
-        case 'ruby': {
-            process = spawn(
-                language.compiler,
-                [binPath, ...language.args],
-                spawnOpts,
-            );
-            break;
-        }
-        case 'js': {
-            process = spawn(
-                language.compiler,
                 [binPath, ...language.args],
                 spawnOpts,
             );

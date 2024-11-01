@@ -1,11 +1,11 @@
 {
     "name": "neocph",
-    "displayName": "neocph",
+    "displayName": "Neo Cph",
     "description": "A simpler, faster, and better looking version of cph",
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "YuiHrsw",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -19,7 +19,7 @@
             "activitybar": [
                 {
                     "id": "cph-judge-view-container",
-                    "title": "neocph",
+                    "title": "Neo Cph",
                     "icon": "dist/static/panel-view-icon.svg"
                 }
             ]
@@ -29,7 +29,7 @@
                 {
                     "type": "webview",
                     "id": "cph.judgeView",
-                    "name": "Results"
+                    "name": "Testcases"
                 }
             ]
         },
@@ -46,7 +46,7 @@
             }
         ],
         "configuration": {
-            "title": "neocph",
+            "title": "Neo Cph",
             "properties": {
                 "cph.general.saveLocation": {
                     "type": "string",
@@ -101,17 +101,6 @@
                     "default": "python3",
                     "description": "Command used to run python files. Example 'py', 'python3', 'pypy3', etc."
                 },
-                "cph.language.ruby.Args": {
-                    "title": "Compilation flags for ruby",
-                    "type": "string",
-                    "default": "",
-                    "description": "Space seperated additional flags passed to ruby while compiling your file."
-                },
-                "cph.language.ruby.Command": {
-                    "type": "string",
-                    "default": "ruby",
-                    "description": "Command used to run ruby files."
-                },
                 "cph.language.rust.Args": {
                     "title": "Compilation flags for Rust",
                     "type": "string",
@@ -134,17 +123,6 @@
                     "default": "go",
                     "description": "Command used to compile .go files."
                 },
-                "cph.language.haskell.Args": {
-                    "title": "Compilation flags for .hs files",
-                    "type": "string",
-                    "default": "",
-                    "description": "Space seperated additional flags passed to go while compiling your file."
-                },
-                "cph.language.haskell.Command": {
-                    "type": "string",
-                    "default": "ghc",
-                    "description": "Command used to compile .hs files."
-                },
                 "cph.language.java.Args": {
                     "title": "Compilation flags for Java",
                     "type": "string",
@@ -155,17 +133,6 @@
                     "type": "string",
                     "default": "javac",
                     "description": "Command used to compile java files."
-                },
-                "cph.language.js.Args": {
-                    "title": "Compilation flags for JavaScript",
-                    "type": "string",
-                    "default": "",
-                    "description": "Space seperated additional flags passed to node (for JavaScript) while compiling your file. Example '--abort-on-uncaught-exception'"
-                },
-                "cph.language.js.Command": {
-                    "type": "string",
-                    "default": "node",
-                    "description": "Command used to compile .js files."
                 },
                 "cph.general.retainWebviewContext": {
                     "type": "boolean",

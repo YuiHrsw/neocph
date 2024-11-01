@@ -10,21 +10,15 @@ import {
     getCArgsPref,
     getCppArgsPref,
     getPythonArgsPref,
-    getRubyArgsPref,
     getRustArgsPref,
     getJavaArgsPref,
-    getJsArgsPref,
     getGoArgsPref,
-    getHaskellArgsPref,
     getCCommand,
     getCppCommand,
     getPythonCommand,
-    getRubyCommand,
     getRustCommand,
     getJavaCommand,
-    getJsCommand,
     getGoCommand,
-    getHaskellCommand,
 } from './preferences';
 import { Language, Problem } from './types';
 
@@ -71,14 +65,6 @@ export const getLanguage = (srcPath: string): Language => {
                 skipCompile: true,
             };
         }
-        case 'ruby': {
-            return {
-                name: langName,
-                args: [...getRubyArgsPref()],
-                compiler: getRubyCommand(),
-                skipCompile: true,
-            };
-        }
         case 'rust': {
             return {
                 name: langName,
@@ -95,27 +81,11 @@ export const getLanguage = (srcPath: string): Language => {
                 skipCompile: false,
             };
         }
-        case 'js': {
-            return {
-                name: langName,
-                args: [...getJsArgsPref()],
-                compiler: getJsCommand(),
-                skipCompile: true,
-            };
-        }
         case 'go': {
             return {
                 name: langName,
                 args: [...getGoArgsPref()],
                 compiler: getGoCommand(),
-                skipCompile: false,
-            };
-        }
-        case 'hs': {
-            return {
-                name: langName,
-                args: [...getHaskellArgsPref()],
-                compiler: getHaskellCommand(),
                 skipCompile: false,
             };
         }

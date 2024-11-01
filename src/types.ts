@@ -18,14 +18,8 @@ export type prefSection =
     | 'language.rust.Command'
     | 'language.java.Args'
     | 'language.java.Command'
-    | 'language.js.Args'
-    | 'language.js.Command'
     | 'language.python.Args'
     | 'language.python.Command'
-    | 'language.ruby.Args'
-    | 'language.ruby.Command'
-    | 'language.haskell.Args'
-    | 'language.haskell.Command'
     | 'general.retainWebviewContext'
     | 'general.autoShowJudge';
 
@@ -38,14 +32,11 @@ export type Language = {
 
 export type LangNames =
     | 'python'
-    | 'ruby'
     | 'c'
     | 'cpp'
     | 'rust'
     | 'java'
-    | 'js'
-    | 'go'
-    | 'hs';
+    | 'go';
 
 export type TestCase = {
     input: string;
