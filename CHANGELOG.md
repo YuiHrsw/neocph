@@ -2,7 +2,7 @@
 
 ## 1.0.5
 
--   remove necessary language support
+-   remove unnecessary language support
 
 ## 1.0.4
 
