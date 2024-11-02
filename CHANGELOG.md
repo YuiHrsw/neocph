@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+
+-   dotnet script support
+
 ## 1.0.4
 
 -   update testcase UI

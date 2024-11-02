@@ -30,6 +30,7 @@ TopCoder etc. with the help of competitive companion browser extension
 
 -   C++
 -   C
+-   C# Script
 -   Rust
 -   Go
 -   Haskell

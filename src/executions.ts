@@ -31,11 +31,7 @@ export const runTestCase = (
     };
     const spawnOpts = {
         timeout: config.timeout,
-        env: {
-            ...global.process.env,
-            DEBUG: 'true',
-            CPH: 'true',
-        },
+        env: { ...global.process.env },
     };
 
     let process: ChildProcessWithoutNullStreams;
@@ -90,14 +86,6 @@ export const runTestCase = (
             args.push(binFileName);
 
             process = spawn('java', args);
-            break;
-        }
-        case 'cs': {
-            process = spawn(
-                language.compiler,
-                [binPath],
-                spawnOpts,
-            );
             break;
         }
         default: {
