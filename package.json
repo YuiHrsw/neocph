@@ -1,10 +1,10 @@
 {
-    "name": "neocph",
-    "displayName": "Neo Cph",
-    "description": "A simpler, faster, and better looking version of cph",
+    "name": "cp-tools",
+    "displayName": "CP Tools",
+    "description": "Competitive Programming Tools for VS Code",
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
-    "publisher": "YuiHrsw",
+    "publisher": "yui",
     "version": "1.0.5",
     "engines": {
         "vscode": "^1.52.0"
@@ -19,7 +19,7 @@
             "activitybar": [
                 {
                     "id": "cph-judge-view-container",
-                    "title": "Neo Cph",
+                    "title": "CP Tools",
                     "icon": "dist/static/panel-view-icon.svg"
                 }
             ]
@@ -46,7 +46,7 @@
             }
         ],
         "configuration": {
-            "title": "Neo Cph",
+            "title": "CP Tools",
             "properties": {
                 "cph.general.saveLocation": {
                     "type": "string",
@@ -101,6 +101,17 @@
                     "default": "python3",
                     "description": "Command used to run python files. Example 'py', 'python3', 'pypy3', etc."
                 },
+                "cph.language.java.Args": {
+                    "title": "Compilation flags for Java",
+                    "type": "string",
+                    "default": "",
+                    "description": "Space seperated additional flags passed to javac while compiling your file. Example '-verbose'"
+                },
+                "cph.language.java.Command": {
+                    "type": "string",
+                    "default": "javac",
+                    "description": "Command used to compile java files."
+                },
                 "cph.language.rust.Args": {
                     "title": "Compilation flags for Rust",
                     "type": "string",
@@ -122,17 +133,6 @@
                     "type": "string",
                     "default": "go",
                     "description": "Command used to compile .go files."
-                },
-                "cph.language.java.Args": {
-                    "title": "Compilation flags for Java",
-                    "type": "string",
-                    "default": "",
-                    "description": "Space seperated additional flags passed to javac while compiling your file. Example '-verbose'"
-                },
-                "cph.language.java.Command": {
-                    "type": "string",
-                    "default": "javac",
-                    "description": "Command used to compile java files."
                 },
                 "cph.general.retainWebviewContext": {
                     "type": "boolean",
@@ -156,31 +156,21 @@
         "webpack-dev": "webpack --mode development --watch",
         "webpack-frontend-dev": "webpack --mode development --watch --config ./webpack.frontend.config.js",
         "test-compile": "tsc -p ./",
-        "lint": "eslint . --ext .ts,.tsx",
-        "pretest": "tsc -p ./",
-        "test": "jest out/ --silent=false"
+        "pretest": "tsc -p ./"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.10",
         "@types/node": "^20.9.5",
         "@types/react": "^18.2.38",
         "@types/react-dom": "^18.2.17",
         "@types/vscode": "^1.52.0",
-        "@typescript-eslint/eslint-plugin": "^6.12.0",
-        "@typescript-eslint/parser": "^6.12.0",
         "@vscode/codicons": "^0.0.35",
         "copy-webpack-plugin": "^11.0.0",
-        "eslint": "^8.54.0",
-        "eslint-plugin-react": "^7.33.2",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "jest": "^29.7.0",
         "ts-loader": "^9.5.1",
         "typescript": "^5.3.2",
         "webpack": "^5.94.0",
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
-        "@vscode/extension-telemetry": "^0.9.0",
         "python-shell": "^5.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

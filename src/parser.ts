@@ -52,7 +52,7 @@ export const saveProblem = (srcPath: string, problem: Problem) => {
 
     const probPath = getProbSaveLocation(srcPath);
     try {
-        fs.writeFileSync(probPath, JSON.stringify(problem));
+        fs.writeFileSync(probPath, JSON.stringify(problem, null, 4));
     } catch (err) {
         throw new Error(err as string);
     }
