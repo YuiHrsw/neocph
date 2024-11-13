@@ -2,10 +2,7 @@ import { getLanguage, ocHide, ocShow, ocWrite } from './utils';
 import { Language } from './types';
 import { spawn } from 'child_process';
 import path from 'path';
-import {
-    getSaveLocationPref,
-    getHideStderrorWhenCompiledOK,
-} from './preferences';
+import { getSaveLocationPref, getHideStderrorWhenCompiledOK } from './preferences';
 import * as vscode from 'vscode';
 import { getJudgeViewProvider } from './extension';
 import { platform } from 'os';

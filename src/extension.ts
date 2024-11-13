@@ -1,11 +1,7 @@
 import * as vscode from 'vscode';
 import { setupCompanionServer } from './companion';
 import runTestCases from './runTestCases';
-import {
-    editorChanged,
-    editorClosed,
-    checkLaunchWebview,
-} from './webview/editorChange';
+import { editorChanged, editorClosed, checkLaunchWebview } from './webview/editorChange';
 import JudgeViewProvider from './webview/JudgeView';
 import { getRetainWebviewContextPref } from './preferences';
 

@@ -6,10 +6,7 @@ import { deleteProblemFile, getProblemForDocument } from '../utils';
 import { runSingleAndSave } from './processRunSingle';
 import runAllAndSave from './processRunAll';
 import runTestCases from '../runTestCases';
-import {
-    getAutoShowJudgePref,
-    getRetainWebviewContextPref,
-} from '../preferences';
+import { getAutoShowJudgePref, getRetainWebviewContextPref } from '../preferences';
 import { setOnlineJudgeEnv } from '../compiler';
 
 class JudgeViewProvider implements vscode.WebviewViewProvider {

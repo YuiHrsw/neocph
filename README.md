@@ -3,8 +3,8 @@
 Quickly compile, run and judge competitive programming problems in VS Code.
 Automatically download testcases , or write & test your own problems.
 
-neocph supports a large number of popular platforms like Codeforces, Codechef,
-TopCoder etc. with the help of competitive companion browser extension
+This extension supports a large number of popular platforms like Codeforces, Codechef,
+TopCoder etc. with the help of competitive companion browser extension.
 
 ## Quick start
 
@@ -45,15 +45,6 @@ compares each line of STDOUT with expected output to judge results.
 Generated testcases are stored as JSON files (`.prob` extension) either in the
 folder of the source code or the folder mentioned in extension preferences.
 
-## Competitive Companion Integration
-
-The extension is integrated with the
-[Competitive Companion](https://github.com/jmerle/competitive-companion) browser
-extension. Our extension runs a HTTP server on port `27121`, and companion
-`POST`s a new problem to this server, and we process it.
-
-## Developer Tools
-
 Currently, TypeScript is used to develop both the Node.JS and the webview parts
 of the extension. Webpack is used to bundle the extension to reduce extension size and
 number of individual components.
@@ -61,9 +52,16 @@ number of individual components.
 Most of the TypeScript type definitions are stored in `src/types.ts`, the most
 important of which is `Problem` and `Case`.
 
-Several common functions have brief JSDocs on their purpose/ workings.
+Several common functions have brief JSDocs on their purpose / workings.
 
-## Building and Hacking the extension in VS Code
+### Competitive Companion Integration
+
+The extension is integrated with the
+[Competitive Companion](https://github.com/jmerle/competitive-companion) browser
+extension. Our extension runs a HTTP server on port `27121`, and companion
+`POST`s a new problem to this server, and we process it.
+
+### Building the extension
 
 The root source file is `src/extension.ts`, which registers the commands etc.
 
@@ -72,10 +70,8 @@ The launch config is in `.vscode/launch/json`. To launch the extension, just
 press `F5`. It will bundle the extension using Webpack first, saving the output
 in `dist/`.
 
-We recommend installing `ESLint` VS Code extensions. Before
-commiting, make sure you are passing the following tests:
+Before commiting, make sure you are passing the following tests:
 
--   ESLint lint: `npm run lint`.
 -   Typescript compilation: `npm run test-compile`.
 -   Pre-publish bundling: `npm run vscode:prepublish`.
 

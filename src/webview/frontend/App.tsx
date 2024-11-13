@@ -471,7 +471,7 @@ function App() {
                 <div className={`ui p10 fallback`}>
                     <div className="text-center">
                         <p>
-                            This document does not have a CPH problem associated
+                            This document does not have a problem associated
                             with it.
                         </p>
                         <br />
