@@ -10,7 +10,7 @@ import { getAutoShowJudgePref, getRetainWebviewContextPref } from '../preference
 import { setOnlineJudgeEnv } from '../compiler';
 
 class JudgeViewProvider implements vscode.WebviewViewProvider {
-    public static readonly viewType = 'cph.judgeView';
+    public static readonly viewType = 'cp-tools.judgeView';
 
     private _view?: vscode.WebviewView;
 
@@ -120,7 +120,7 @@ class JudgeViewProvider implements vscode.WebviewViewProvider {
     public async focus() {
         console.log('focusing');
         if (!this._view) {
-            await vscode.commands.executeCommand('cph.judgeView.focus');
+            await vscode.commands.executeCommand('cp-tools.judgeView.focus');
         } else {
             this._view.show?.(true);
         }

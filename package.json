@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "icon": "icon.png",
     "publisher": "yui",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "engines": {
         "vscode": "^1.52.0"
     },
@@ -18,128 +18,129 @@
         "viewsContainers": {
             "activitybar": [
                 {
-                    "id": "cph-judge-view-container",
+                    "id": "cp-tools",
                     "title": "CP Tools",
                     "icon": "dist/static/panel-view-icon.svg"
                 }
             ]
         },
         "views": {
-            "cph-judge-view-container": [
+            "cp-tools": [
                 {
                     "type": "webview",
-                    "id": "cph.judgeView",
+                    "id": "cp-tools.judgeView",
                     "name": "Testcases"
                 }
             ]
         },
         "commands": [
             {
-                "command": "cph.runTestCases",
-                "title": "neocph: Run Testcases"
+                "command": "cp-tools.runTestCases",
+                "title": "CP Tools: Run Testcases"
             }
         ],
         "keybindings": [
             {
                 "key": "ctrl+r",
-                "command": "cph.runTestCases"
+                "command": "cp-tools.runTestCases",
+                "when": "view.cp-tools.judgeView.visible"
             }
         ],
         "configuration": {
             "title": "CP Tools",
             "properties": {
-                "cph.general.saveLocation": {
+                "cp-tools.general.saveLocation": {
                     "type": "string",
                     "default": "",
                     "description": "Location where generated .tcs and .bin files will be saved. Leave empty to save the file in the source file directory. Use this to clean up your folders."
                 },
-                "cph.general.timeOut": {
+                "cp-tools.general.timeOut": {
                     "type": "number",
                     "default": 5000,
                     "description": "The time in ms for which a testcase is run before it is killed ( timed-out )."
                 },
-                "cph.general.hideStderrorWhenCompiledOK": {
+                "cp-tools.general.hideStderrorWhenCompiledOK": {
                     "type": "boolean",
                     "default": true,
                     "description": "Ignore and don't show stderror when compilation exit code is zero."
                 },
-                "cph.general.ignoreSTDERROR": {
+                "cp-tools.general.ignoreSTDERROR": {
                     "type": "boolean",
                     "default": true,
                     "description": "If enabled, non-empty standard error will not result in testcase failing."
                 },
-                "cph.language.c.Args": {
+                "cp-tools.language.c.Args": {
                     "title": "Compilation flags for .c files",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to gcc ( for C ) while compiling your file. Example '-O2 -Wall'"
                 },
-                "cph.language.c.Command": {
+                "cp-tools.language.c.Command": {
                     "type": "string",
                     "default": "gcc",
                     "description": "Command used to compile .c files. Example 'gcc', 'gcc-10', 'clang', etc."
                 },
-                "cph.language.cpp.Args": {
+                "cp-tools.language.cpp.Args": {
                     "title": "Compilation flags for .cpp files",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to g++ ( for C++ ) while compiling your file. Example '-D_GLIBCXX_DEBUG -std=c++20'"
                 },
-                "cph.language.cpp.Command": {
+                "cp-tools.language.cpp.Command": {
                     "type": "string",
                     "default": "g++",
                     "description": "Command used to compile .cpp files. Example 'g++', 'g++-10', 'clang++', etc."
                 },
-                "cph.language.python.Args": {
+                "cp-tools.language.python.Args": {
                     "title": "Compilation flags for Python",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to python while compiling your file. Example '-Wignore -u'"
                 },
-                "cph.language.python.Command": {
+                "cp-tools.language.python.Command": {
                     "type": "string",
                     "default": "python3",
                     "description": "Command used to run python files. Example 'py', 'python3', 'pypy3', etc."
                 },
-                "cph.language.java.Args": {
+                "cp-tools.language.java.Args": {
                     "title": "Compilation flags for Java",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to javac while compiling your file. Example '-verbose'"
                 },
-                "cph.language.java.Command": {
+                "cp-tools.language.java.Command": {
                     "type": "string",
                     "default": "javac",
                     "description": "Command used to compile java files."
                 },
-                "cph.language.rust.Args": {
+                "cp-tools.language.rust.Args": {
                     "title": "Compilation flags for Rust",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to rustc while compiling your file. Example '-O2 --verbose'"
                 },
-                "cph.language.rust.Command": {
+                "cp-tools.language.rust.Command": {
                     "type": "string",
                     "default": "rustc",
                     "description": "Command used to compile rust files."
                 },
-                "cph.language.go.Args": {
+                "cp-tools.language.go.Args": {
                     "title": "Compilation flags for .go files",
                     "type": "string",
                     "default": "",
                     "description": "Space seperated additional flags passed to go while compiling your file. Example '-gcflags=-S'"
                 },
-                "cph.language.go.Command": {
+                "cp-tools.language.go.Command": {
                     "type": "string",
                     "default": "go",
                     "description": "Command used to compile .go files."
                 },
-                "cph.general.retainWebviewContext": {
+                "cp-tools.general.retainWebviewContext": {
                     "type": "boolean",
                     "default": false,
                     "description": "Keep the webview active even when it's hidden. May improve performance but may cause some rendering issues."
                 },
-                "cph.general.autoShowJudge": {
+                "cp-tools.general.autoShowJudge": {
                     "type": "boolean",
                     "default": false,
                     "description": "Automatically show the judge view when opening a file that has a problem associated with it"

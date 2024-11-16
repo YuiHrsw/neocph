@@ -14,7 +14,7 @@ export const getJudgeViewProvider = () => {
 const registerCommands = (context: vscode.ExtensionContext) => {
     console.log('Registering commands');
     const disposable = vscode.commands.registerCommand(
-        'cph.runTestCases',
+        'cp-tools.runTestCases',
         () => {
             runTestCases();
         },
@@ -48,16 +48,6 @@ const registerCommands = (context: vscode.ExtensionContext) => {
 export function activate(context: vscode.ExtensionContext) {
     console.log('cph: activate() execution started');
     globalThis.context = context;
-
-    // const statusBarItem = vscode.window.createStatusBarItem(
-    //     vscode.StatusBarAlignment.Left,
-    //     1000,
-    // );
-    // statusBarItem.text = ' $(run-all)  Run Testcases';
-    // statusBarItem.tooltip =
-    //     'Competitive Programming Helper - Run all testcases or create if none exist.';
-    // statusBarItem.show();
-    // statusBarItem.command = 'cph.runTestCases';
 
     registerCommands(context);
     setupCompanionServer();

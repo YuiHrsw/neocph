@@ -4,14 +4,14 @@ import fs from 'fs';
 import * as vscode from 'vscode';
 
 const getPreference = (section: prefSection): any => {
-    const ret = workspace.getConfiguration('cph').get(section);
+    const ret = workspace.getConfiguration('cp-tools').get(section);
 
     console.log('Read preference for ', section, ret);
     return ret;
 };
 
 export const updatePreference = (section: prefSection, value: any) => {
-    return workspace.getConfiguration('cph').update(section, value);
+    return workspace.getConfiguration('cp-tools').update(section, value);
 };
 
 export const getAutoShowJudgePref = (): boolean =>

@@ -22,7 +22,7 @@ import {
 } from './preferences';
 import { Language, Problem } from './types';
 
-const oc = vscode.window.createOutputChannel('cph');
+const oc = vscode.window.createOutputChannel('cp-tools');
 
 /**
  * Get language based on file extension
