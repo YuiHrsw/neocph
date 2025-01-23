@@ -156,21 +156,23 @@ export default function CaseView(props: {
                 </div>
                 <div className="time">
                     <button
-                        className="btn btn-green"
+                        className="btn"
                         title="Run Again"
                         onClick={rerun}
                         disabled={running}
+                        style={{ backgroundColor: 'transparent' }}
                     >
                         <span className="icon">
-                            <i className="codicon codicon-play"></i>
+                            <i className="codicon codicon-refresh"></i>
                         </span>{' '}
                     </button>
                     <button
-                        className="btn btn-red"
+                        className="btn"
                         title="Delete Testcase"
                         onClick={() => {
                             props.remove(id);
                         }}
+                        style={{ backgroundColor: 'transparent' }}
                     >
                         <span className="icon">
                             <i className="codicon codicon-close"></i>

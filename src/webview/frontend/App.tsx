@@ -295,20 +295,7 @@ function Judge(props: {
                 </h1>
             </div>
             <div className="results">{views}</div>
-            <div className="margin-10">
-                <div className="row">
-                    <button
-                        className="btn btn-pink"
-                        onClick={newCase}
-                        title="Create a new empty testcase"
-                    >
-                        <span className="icon">
-                            <i className="codicon codicon-add"></i>
-                        </span>{' '}
-                        New Testcase
-                    </button>
-                </div>
-
+            {/* <div className="margin-10">
                 <br />
                 <span onClick={toggleOnlineJudgeEnv}>
                     <input
@@ -317,10 +304,10 @@ function Judge(props: {
                         checked={onlineJudgeEnv}
                     />
                     <span>
-                        Set <code>ONLINE_JUDGE</code>
+                        Define <code>ONLINE_JUDGE</code>
                     </span>
                 </span>
-            </div>
+            </div> */}
             <div className="actions">
                 <div className="row">
                     <button
